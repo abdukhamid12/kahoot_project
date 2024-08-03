@@ -1,1 +1,1 @@
-from django.urls import pathfrom .views import *urlpatterns = [    path('', home, name='home-view')]
+from django.urls import pathfrom .views import *urlpatterns = [    path('', home, name='home-view'),    path('details-view/<int:pk>', detail_view, name='detail-view'),]

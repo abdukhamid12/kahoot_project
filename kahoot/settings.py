@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'unfold',
+    'admin_argon.apps.AdminArgonConfig',
     'kahoot_app',
     'django.contrib.admin',
     'django.contrib.auth',
