@@ -1,0 +1,1 @@
+{% extends '_base.html' %}{% block content %}<center>    <h1 class='text-white'>Question Input</h1>    <br><br>    <form class="text-white w-75" action="" method='GET' enctype="multipart/form-data">        {% csrf_token %}        {{ form.as_p }}        <input type="submit" value="Submit" class="btn btn-primary">    </form></center>{% endblock %}

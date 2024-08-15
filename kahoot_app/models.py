@@ -20,7 +20,7 @@ class Question(models.Model):
         return self.question
 
 class Option (models.Model):
-    question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='options')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE, blank=True, null=True, related_name='options')
     answer = models.CharField(max_length=100)
     is_correct = models.BooleanField(default=False)
 
