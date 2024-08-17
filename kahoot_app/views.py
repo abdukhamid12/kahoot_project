@@ -32,25 +32,23 @@ def detail_view(request, pk):
     }
     return render(request, 'kahoot/detail.html', context)
 
-def create_page_category(request):
+def list_create(request):
     if request.method == 'POST':
-        form = CreateCategoryForm(request.POST, request.FILES)
+        form = CategoryForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('home-view')
-    form = CreateCategoryForm()
+    category_form = CategoryForm()
 
-    return render(request, 'kahoot/create_page.html', {"form": form, 'categories': Category.objects.all()})
-
-def category_style(request):
-    return render(request, 'kahoot/category_style.html')
-
-
-def create_question(request):
     if request.method == 'POST':
-        form = CreateQuestionForm(request.POST, request.FILES)
+        form = QuestionForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('home-view')
-    form = CreateQuestionForm()
-    return render(request, 'kahoot/quiz_page.html', {"form": form, 'categories': Question.objects.all()})
+    question_form = QuestionForm()
+
+    context = {
+        'category_form': category_form,
+        'question_form': question_form,
+    }
+    return render(request, 'kahoot/category_style.html', context)
