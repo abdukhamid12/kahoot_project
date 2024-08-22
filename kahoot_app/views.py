@@ -85,3 +85,12 @@ def create_question(request):
         'question_form': question_form,
         'option_formset': option_formset,
     })
+
+def game_theme(request):
+    return render(request, 'kahoot/game_preloader.html')
+
+def game_pin_page(request):
+    return render(request, 'kahoot/game_pin.html')
+
+def quiz_board(request):
+    return render(request, 'kahoot/quiz_board.html')
