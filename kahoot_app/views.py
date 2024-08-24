@@ -5,6 +5,8 @@ from .forms import *
 
 # Import Pagination
 from django.core.paginator import Paginator
+
+
 # Create your views here.
 
 def home(request):
@@ -25,12 +27,14 @@ def home(request):
     }
     return render(request, 'kahoot/home.html', context)
 
+
 def detail_view(request, pk):
     category = get_object_or_404(Category, pk=pk)
     context = {
         'category': category,
     }
     return render(request, 'kahoot/detail.html', context)
+
 
 def list_create(request):
     category_form = CategoryForm()
@@ -86,11 +90,25 @@ def create_question(request):
         'option_formset': option_formset,
     })
 
+
 def game_theme(request):
     return render(request, 'kahoot/game_preloader.html')
 
+
 def game_pin_page(request):
-    return render(request, 'kahoot/game_pin.html')
+    import random
+    random_number = random.randint(100000, 1000000)
+    context = {
+        'random_number': str(random_number)[3:] + ' ' + str(random_number)[:3]
+    }
+
+    return render(request, 'kahoot/game_pin.html', context)
+
 
 def quiz_board(request):
-    return render(request, 'kahoot/quiz_board.html')
+    import random
+    random_number = random.randint(100000, 1000000)
+    context = {
+        'random_number': str(random_number)[3:] + ' ' + str(random_number)[:3]
+    }
+    return render(request, 'kahoot/quiz_board.html', context=context)
